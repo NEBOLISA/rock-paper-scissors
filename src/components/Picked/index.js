@@ -28,9 +28,9 @@ function Picked({ onClick, status, setStatus, onClick1, setRemTry }) {
   const { data, setPoints } = usePlayContext();
   let selects;
   const house = [
-    <Rock className="selected" />,
-    <Scissors className="selected" />,
-    <Paper className="selected" />,
+    {alias:"rock",value:<Rock className="selected" />},
+    {alias:"scissors", value:<Scissors className="selected" />},
+    {alias:"paper", value:<Paper className="selected" />},
   ];
   setTimeout(() => {
     setHouseDelay(true);
@@ -79,7 +79,7 @@ function Picked({ onClick, status, setStatus, onClick1, setRemTry }) {
   };
 
   const checkWinOrLose = () => {
-    let changedSelect = house[randomHouse]?.type.name.toLowerCase();
+    let changedSelect = house[randomHouse].alias.toLowerCase();
     console.log("changedSelect", house[randomHouse]);
     console.log("data", data);
     if (data === "rock" && changedSelect === "scissors") {
@@ -147,7 +147,7 @@ function Picked({ onClick, status, setStatus, onClick1, setRemTry }) {
       <div className="house_pick">
         <h2 className="title">THE HOUSE PICKED</h2>
         {delayHouse ? (
-          house[randomHouse]
+          house[randomHouse].value
         ) : (
           <CircularProgress
             sx={{
