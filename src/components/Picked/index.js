@@ -80,6 +80,8 @@ function Picked({ onClick, status, setStatus, onClick1, setRemTry }) {
 
   const checkWinOrLose = () => {
     let changedSelect = house[randomHouse]?.type.name.toLowerCase();
+    console.log("changedSelect", changedSelect);
+    console.log("data", data);
     if (data === "rock" && changedSelect === "scissors") {
       handlePointsIncrease();
     } else if (data === "scissors" && changedSelect === "paper") {
